@@ -16,6 +16,7 @@ using MahApps.Metro.Controls;
 
 namespace DiKo
 {
+   
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -25,17 +26,29 @@ namespace DiKo
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Share, search, download
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// whislist
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// menu event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
