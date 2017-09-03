@@ -5,9 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <TextBlock Name="tbSomething" HorizontalAlignment="Left" Margin="156,103,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="143" Width="288"/>
+        Title="MainWindow" Height="590.838" Width="886.257">
+    <Grid Margin="0,0,0,-4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="16*"/>
+            <RowDefinition Height="137*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="191*"/>
+            <ColumnDefinition Width="687*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="tbSomething" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="237" Width="677" Grid.Row="1" Grid.Column="1"/>
 
     </Grid>
 </Window>

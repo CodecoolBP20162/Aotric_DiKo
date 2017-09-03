@@ -23,7 +23,7 @@ namespace Client
         public MainWindow()
         {
             InitializeComponent();
-            Start();
+            //Start();
 
         }
 
