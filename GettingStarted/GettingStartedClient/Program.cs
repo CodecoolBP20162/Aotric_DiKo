@@ -5,21 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel.Discovery;
 using GettingStartedLib;
+using System.ServiceModel;
 
 namespace GettingStartedClient
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             System.Threading.Thread.Sleep(8000);
-            this.server.WcfTestClient_SetupChannel();
+            WcfTestClient_SetupChannel();
             System.Threading.Thread.Sleep(2000);
-            this.server.WcfTestClient_Ping();
+            WcfTestClient_Ping();
         }
+        
+        private static IWcfPingTest channel;
 
-        private IWcfPingTest channel;
-        public Uri WcfTestClient_DiscoverChannel()
+        public static Uri WcfTestClient_DiscoverChannel()
         {
             var dc = new DiscoveryClient(new UdpDiscoveryEndpoint());
             FindCriteria fc = new FindCriteria(typeof(IWcfPingTest));
@@ -36,7 +38,8 @@ namespace GettingStartedClient
             // also, catch exceptions when no endpoints are found and try again.
             return fr.Endpoints[0].Address.Uri;
         }
-        public void WcfTestClient_SetupChannel()
+
+        public static void WcfTestClient_SetupChannel()
         {
             var binding = new BasicHttpBinding(BasicHttpSecurityMode.None);
             var factory = new ChannelFactory<IWcfPingTest>(binding);
@@ -49,13 +52,13 @@ namespace GettingStartedClient
             //string result = channel.Ping();
             //Console.WriteLine("ping result = " + result);
         }
-        public void WcfTestClient_Ping()
+
+        public static void WcfTestClient_Ping()
         {
             Console.WriteLine("pinging host");
             string result = channel.Ping();
             Console.WriteLine("ping result = " + result);
         }
-
 
     }
 }

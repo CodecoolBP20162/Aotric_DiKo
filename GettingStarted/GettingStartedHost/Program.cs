@@ -13,12 +13,13 @@ namespace GettingStartedHost
 
     class Program
     {
-        public class WcfPingTest : IWcfPingTest
+        
+        public static void Main(string[] args)
         {
-            public const string magicString = "djeut73bch58sb4"; // this is random, just to see if you get the right result
-            public string Ping() { return magicString; }
+            WcfTestHost_Open();
         }
-        public void WcfTestHost_Open()
+
+        public static void WcfTestHost_Open()
         {
             string hostname = System.Environment.MachineName;
             var baseAddress = new UriBuilder("http", hostname, 7400, "WcfPing");
