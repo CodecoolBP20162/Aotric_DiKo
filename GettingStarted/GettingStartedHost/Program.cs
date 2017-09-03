@@ -16,7 +16,8 @@ namespace GettingStartedHost
         
         public static void Main(string[] args)
         {
-            WcfTestHost_Open();
+           WcfTestHost_Open();
+           Console.ReadKey();
         }
 
         public static void WcfTestHost_Open()

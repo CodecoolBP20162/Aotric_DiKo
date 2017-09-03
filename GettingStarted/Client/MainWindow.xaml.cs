@@ -3,22 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.ServiceModel.Discovery;
 using GettingStartedLib;
 using System.ServiceModel;
 
-namespace GettingStartedClient
+namespace Client
 {
-    class Program
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
     {
-        public static void Main(string[] args)
+        public MainWindow()
         {
-            System.Threading.Thread.Sleep(8000);
-            WcfTestClient_SetupChannel();
-            System.Threading.Thread.Sleep(2000);
-            WcfTestClient_Ping();
+            InitializeComponent();
+            Start();
+
         }
-        
+
+        public void Start()
+        {
+            WcfTestClient_SetupChannel();
+            string result = WcfTestClient_Ping();
+            tbSomething.Text = result;
+        }
+
         private static IWcfPingTest channel;
 
         public static Uri WcfTestClient_DiscoverChannel()
@@ -34,7 +49,7 @@ namespace GettingStartedClient
             return fr.Endpoints[0].Address.Uri;
         }
 
-        public static void WcfTestClient_SetupChannel()
+        public static string WcfTestClient_SetupChannel()
         {
             var binding = new BasicHttpBinding(BasicHttpSecurityMode.None);
             var factory = new ChannelFactory<IWcfPingTest>(binding);
@@ -42,17 +57,15 @@ namespace GettingStartedClient
             Console.WriteLine("creating channel to " + uri.ToString());
             EndpointAddress ea = new EndpointAddress(uri);
             channel = factory.CreateChannel(ea);
-            Console.WriteLine("channel created");
-            Console.WriteLine("pinging host");
             string result = channel.Ping();
-            Console.WriteLine("ping result = " + result);
+            return result;
         }
 
-        public static void WcfTestClient_Ping()
+        public static string WcfTestClient_Ping()
         {
             Console.WriteLine("pinging host");
             string result = channel.Ping();
-            Console.WriteLine("ping result = " + result);
+            return result;
         }
 
     }
